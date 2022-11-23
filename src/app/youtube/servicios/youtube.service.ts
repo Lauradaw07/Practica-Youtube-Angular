@@ -7,7 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class YoutubeService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    if(localStorage.getItem("Favoritos"))
+    this.videosFavoritos = JSON.parse(localStorage.getItem("Favoritos")!) || [];
+  }
 
   public videosBuscados: Video[] = [];
   public videosFavoritos: Video[] = [];
@@ -33,6 +36,7 @@ export class YoutubeService {
       this.videosFavoritos.push(video);
       console.log(this.videosFavoritos);
       
+      localStorage.setItem("Favoritos", JSON.stringify(this.videosFavoritos));
     }
   }
 
@@ -40,15 +44,14 @@ export class YoutubeService {
     let indice = this.videosFavoritos.findIndex(videoEnArray => videoEnArray.id.videoId == id);
     if(indice != -1) {
       this.videosFavoritos.splice(indice, 1);
+      localStorage.setItem("Favoritos", JSON.stringify(this.videosFavoritos));
     }
   }
 
   borrarTodosFavoritos() {
-    console.log('entra');
-    
     this.videosFavoritos = [];
-    console.log(this.videosFavoritos);
-    
+
+    localStorage.setItem("Favoritos", JSON.stringify(this.videosFavoritos));
   }
 
 }
