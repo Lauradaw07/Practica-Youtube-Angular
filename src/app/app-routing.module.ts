@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BuscadorComponent } from './youtube/buscador/buscador.component';
 import { FavoritosComponent } from './youtube/favoritos/favoritos.component';
 import { PaginaPrincipalComponent } from './youtube/pagina-principal/pagina-principal.component';
 
