@@ -1,0 +1,13 @@
+.btn {
+    width: 200px;
+}
+
+.card {
+    height: 600px;
+    background-color: rgb(88, 88, 88);
+    color: white;
+}
+
+.contenedor {
+    margin-top: 80px;
+}
