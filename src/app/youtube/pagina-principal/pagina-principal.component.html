@@ -1,6 +1,6 @@
 <div class="row contenedor">
 
-    <div class="col-12 col-lg-3" *ngFor="let video of getVideos">
+    <div class="col-12 col-lg-3 col-md-4 col-sm-6" *ngFor="let video of getVideos">
 
         <div class="card mt-3 mb-3">
             <div class="card-body">
@@ -8,7 +8,7 @@
                     <img src="{{video.snippet.thumbnails.high.url}}" alt="">
                 </div>
                 <div class="row mt-3">
-                    <h5>{{video.snippet.title}}</h5>
+                    <a>{{video.snippet.title}}</a>
                 </div>
 
                 <div class="row">

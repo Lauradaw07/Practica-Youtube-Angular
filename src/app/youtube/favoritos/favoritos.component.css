@@ -11,3 +11,9 @@
 .contenedor {
     margin-top: 80px;
 }
+
+@media (max-width: 993px) {
+    .contenedor {
+        margin-top: 130px;
+    }
+}

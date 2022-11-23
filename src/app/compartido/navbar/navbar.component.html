@@ -1,5 +1,5 @@
 <div class="row d-flex justify-content-evenly">
-  <div class="col-12 col-lg-3 d-flex justify-content-center align-items-center">
+  <div class="col-12 col-lg-3 col-md-12 col-sm-12 d-flex justify-content-center align-items-center">
     <img src="../../../assets/{{tituloImagen}}" alt="Imagen no disponible">
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -12,15 +12,16 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/favoritos">Favoritos</a>
             </li>
+            <li><img class="iconoFavs" src="../../../assets/favourite.png" alt=""></li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
 
-  <div class="col-12 col-lg-7 d-flex align-items-center">
+  <div class="col-10 col-lg-7 col-md-8 col-sm-10 d-flex align-items-center">
     
-    <input (keyup.enter)="buscar(texto.value)" type="text" class="form-control p-2" placeholder="Búsqueda de Gifs..." #texto>
+    <input (keyup.enter)="buscar(texto.value)" type="text" class="form-control p-2" placeholder="Buscar..." #texto>
 
   </div>
 
