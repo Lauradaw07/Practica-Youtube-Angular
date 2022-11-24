@@ -15,6 +15,10 @@ export class PaginaPrincipalComponent {
     return this.youtubeService.videosBuscados;
   }
 
+  get getEstado() {
+    return this.youtubeService.estaCargando;
+  }
+
   agregarVideo(video: Video) {
     this.youtubeService.agregarVideoAFavoritos(video);
   }

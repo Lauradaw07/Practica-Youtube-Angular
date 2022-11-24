@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Video, Youtube } from '../interfaces/youtube.inteface';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +15,21 @@ export class YoutubeService {
 
   public videosBuscados: Video[] = [];
   public videosFavoritos: Video[] = [];
+  public estaCargando: boolean = false;
 
   private api_key: string = "AIzaSyAdMSwiKNQevSh82RQHaEBGpoY1uYYX3xo";
   private limit: number = 12;
 
   buscarVideo(busqueda: string) {
+    this.estaCargando = true;
     busqueda = busqueda.trim();
     busqueda = busqueda.toLowerCase();
 
     if((busqueda != "")) {
       this.httpClient.get<Youtube>(`https://www.googleapis.com/youtube/v3/search?key=${this.api_key}&q=${busqueda}&part=snippet&type=video&maxResults=${this.limit}`).subscribe((respuesta) =>  {
-        console.log(respuesta);
+        if(respuesta) {
+          this.estaCargando = false;
+        }
         
       this.videosBuscados = respuesta.items;
     });
@@ -49,9 +54,25 @@ export class YoutubeService {
   }
 
   borrarTodosFavoritos() {
-    this.videosFavoritos = [];
-
-    localStorage.setItem("Favoritos", JSON.stringify(this.videosFavoritos));
+    Swal.fire({
+      title: '¿Seguro que quieres borrar todos los vídeos?',
+      text: "No podrás deshacer los cambios!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Borrar todo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.videosFavoritos = [];
+        localStorage.setItem("Favoritos", JSON.stringify(this.videosFavoritos));
+        Swal.fire(
+          'Borrado!',
+          'Se han borrado todos los vídeos.',
+          'success'
+        )
+      }
+    })
   }
 
 }
