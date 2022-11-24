@@ -48,3 +48,32 @@
  }
 }
 
+@media (max-width: 993px) {
+    .contenedor {
+        margin-top: 120px;
+    }
+}
+
+@media (max-width: 895px) {
+    .card {
+        height: 620px;
+    }
+}
+
+@media (max-width: 685px) {
+    .card {
+        height: 620px;
+    }
+}
+
+@media (max-width: 577px) {
+    .card {
+        height: 720px;
+    }
+}
+
+@media (max-width: 403px) {
+    .card {
+        height: 620px;
+    }
+}
